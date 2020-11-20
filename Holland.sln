@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Holland", "Holland\Holland.csproj", "{414559B7-245F-42C3-A068-CF263E4D9ED5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HollandMethods", "HollandMethods\HollandMethods.csproj", "{CE64163A-8D05-45D6-9CE9-9FD96BE4CEA2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{414559B7-245F-42C3-A068-CF263E4D9ED5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{414559B7-245F-42C3-A068-CF263E4D9ED5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{414559B7-245F-42C3-A068-CF263E4D9ED5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{414559B7-245F-42C3-A068-CF263E4D9ED5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE64163A-8D05-45D6-9CE9-9FD96BE4CEA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE64163A-8D05-45D6-9CE9-9FD96BE4CEA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE64163A-8D05-45D6-9CE9-9FD96BE4CEA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE64163A-8D05-45D6-9CE9-9FD96BE4CEA2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4E70C4C7-6334-4FD0-BE07-F4AEDFBA0DD3}
+	EndGlobalSection
+EndGlobal
