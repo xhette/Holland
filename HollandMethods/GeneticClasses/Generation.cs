@@ -82,5 +82,9 @@ namespace HollandMethods.GeneticClasses
             int indexExchange = Species.IndexOf(toExchange);
             Species[indexExchange] = new Specie(newGeneration);
         }
+        public Specie BestSpecie()
+        {
+            return Species.Min();
+        }
     }
 }

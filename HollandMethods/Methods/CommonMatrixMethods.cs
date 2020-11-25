@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
+using HollandMethods.StatisticClasses;
+
 namespace HollandMethods.Methods
 {
 	public static class CommonMatrixMethods
 	{
-		public static int[] FillArrayRandom(int min, int max, int m)
+		public static int[,] FillMatrix(int min, int max, int taskCount, int procCount, StartGenerationTypeEnum type)
 		{
-			int[] array = new int[m];
+			int[] array = new int[taskCount];
 			Random random = new Random();
 
 			for (int i = 0; i < array.Length; i++)
@@ -16,7 +18,18 @@ namespace HollandMethods.Methods
 				array[i] = random.Next(min, max);
 			}
 
-			return array;
+			int[,] result = null;
+
+			if (type == StartGenerationTypeEnum.CriticalWay)
+			{
+				result = StartGenerationRender.CriticalWay(array, procCount);
+			}
+			else
+			{
+				result = StartGenerationRender.RandomWay(array, procCount);
+			}
+
+			return result;
 		}
 
 		public static Array ResizeMatrix(Array arr, int n, int m)

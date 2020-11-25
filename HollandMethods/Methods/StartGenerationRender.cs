@@ -11,7 +11,7 @@ namespace HollandMethods.Methods
 		public static int[,] CriticalWay(int[] tasks, int n)
 		{
 			int[,] schedule = new int[1, n];
-			int[] loads = new int[tasks.GetLength(1)];
+			int[] loads = new int[n];
 
 			for (int i = 0; i < tasks.Length; i++)
 			{
