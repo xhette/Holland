@@ -8,7 +8,7 @@ namespace HollandMethods.Methods
 {
 	public static class CommonMatrixMethods
 	{
-		public static int[,] FillMatrix(int min, int max, int taskCount, int procCount, StartGenerationTypeEnum type)
+		public static int[] FillArray (int min, int max, int taskCount)
 		{
 			int[] array = new int[taskCount];
 			Random random = new Random();
@@ -18,18 +18,18 @@ namespace HollandMethods.Methods
 				array[i] = random.Next(min, max);
 			}
 
-			int[,] result = null;
+			//int[,] result = null;
 
-			if (type == StartGenerationTypeEnum.CriticalWay)
-			{
-				result = StartGenerationRender.CriticalWay(array, procCount);
-			}
-			else
-			{
-				result = StartGenerationRender.RandomWay(array, procCount);
-			}
+			//if (type == StartGenerationTypeEnum.CriticalWay)
+			//{
+			//	result = StartGenerationRender.CriticalWay(array, procCount);
+			//}
+			//else
+			//{
+			//	result = StartGenerationRender.RandomWay(array, procCount);
+			//}
 
-			return result;
+			return array;
 		}
 
 		public static Array ResizeMatrix(Array arr, int n, int m)

@@ -32,32 +32,32 @@ namespace HollandMethods.StatisticClasses
 			Statistics = new List<StatisticModel>();
 		}
 
-		void GoRandom()
+		void GoRandom(int[] tasks)
 		{
-			Parallel.For(0, _matrixCount, c =>
-			{
-				var holland = new HollandModel(_taskCount, _procCount, _speciesCount, _minLoad, _maxLoad, _repeatsCount, StartGenerationTypeEnum.Random);
-				holland.Run();
+			int[,] start = StartGenerationRender.RandomWay(tasks, _procCount);
+			var holland = new HollandModel(start, _speciesCount, _repeatsCount, StartGenerationTypeEnum.Random);
+			holland.Run();
 
-				Statistics.Add(new StatisticModel(holland.Statistic));
-			});
+			Statistics.Add(new StatisticModel(holland.Statistic, tasks));
 		}
 
-		void GoCriticalWay()
+		void GoCriticalWay(int[] tasks)
 		{
-			Parallel.For(0, _matrixCount, c =>
-			{
-				var holland = new HollandModel(_taskCount, _procCount, _speciesCount, _minLoad, _maxLoad, _repeatsCount, StartGenerationTypeEnum.CriticalWay);
-				holland.Run();
+			int[,] start = StartGenerationRender.CriticalWay(tasks, _procCount);
+			var holland = new HollandModel(start, _speciesCount, _repeatsCount, StartGenerationTypeEnum.CriticalWay);
+			holland.Run();
 
-				Statistics.Add(new StatisticModel(holland.Statistic));
-			});
+			Statistics.Add(new StatisticModel(holland.Statistic, tasks));
 		}
 
 		public void FeelStatistics()
 		{
-			GoRandom();
-			GoCriticalWay();
+			Parallel.For(0, _matrixCount, c =>
+			{
+				int[] tasks = CommonMatrixMethods.FillArray(_minLoad, _maxLoad, _taskCount);
+				GoRandom(tasks);
+				GoCriticalWay(tasks);
+			});
 		}
 	}
 }

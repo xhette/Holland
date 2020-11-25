@@ -19,9 +19,9 @@ namespace HollandMethods.Methods
 
 		readonly int repeatsCount;
 
-		public HollandModel(int taskCount, int procCount, int speciesCount, int minLoad, int maxLoad, int repeatsCount, StartGenerationTypeEnum type)
+		public HollandModel(int[,] tasks, int speciesCount, int repeatsCount, StartGenerationTypeEnum type)
 		{
-			Tasks = CommonMatrixMethods.FillMatrix(minLoad, maxLoad, taskCount, procCount, type);
+			Tasks = tasks;
 			lastGeneration = new Generation(Tasks, speciesCount);
 			bestSpecie = lastGeneration.BestSpecie();
 			this.repeatsCount = repeatsCount;
