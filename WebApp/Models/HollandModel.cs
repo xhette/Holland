@@ -11,6 +11,10 @@ namespace WebApp.Models
 {
 	public class HollandModel
 	{
+		public int Id { get; set; }
+
+		public string FolherName { get; set; }
+
 		public int[] StartArray { get; set; }
 
 		public int[,] Tasks { get; set; }
@@ -52,6 +56,8 @@ namespace WebApp.Models
 			ProcessingTime = statistic.ProcessingTime;
 			StartGenerationTypeString = statistic.StartGenerationTypeString;
 			StartGenerationTypeInt = (int)statistic.StartGenerationType;
+			Id = statistic.Id;
+			FolherName = statistic.FolherName;
 		}
 	}
 }

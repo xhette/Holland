@@ -66,6 +66,14 @@ namespace WebApp.Controllers
 			return View(statistic);
 		}
 
+		public IActionResult DownloadGenerationNodes (string folderName, int id, int startType)
+		{
+			byte[] file = FilesMethods.FromXml(_filesPath, folderName, id, startType);
+			string fileName = String.Format("{0}.html", id);
+
+			return File(file, "application/html", fileName);
+		}
+
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()
 		{

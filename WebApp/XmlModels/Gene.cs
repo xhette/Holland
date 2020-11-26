@@ -11,12 +11,12 @@ namespace WebApp.XmlModels
 	public class Gene
 	{
 		[XmlElement("Row")]
-		int Row { get; set; }
+		public int Row { get; set; }
 
 		[XmlElement("Processor")]
-		int Processor { get; set; }
+		public int Processor { get; set; }
 
 		[XmlElement("ProcessingTime")]
-		int ProcessingTime { get; set; }
+		public int ProcessingTime { get; set; }
 	}
 }

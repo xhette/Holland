@@ -9,8 +9,7 @@ namespace WebApp.XmlModels
 	[Serializable]
 	public class Root
 	{
-		[XmlArray("Tasks")]
-		public List<Task> Tasks { get; set; }
+		public Task Tasks { get; set; }
 
 		[XmlArray("Generations")]
 		public List<Generation> Generations { get; set; }

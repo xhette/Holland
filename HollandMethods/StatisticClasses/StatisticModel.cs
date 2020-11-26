@@ -8,6 +8,10 @@ namespace HollandMethods.StatisticClasses
 {
 	public class StatisticModel
 	{
+		public int Id { get; set; }
+
+		public string FolherName { get; set; }
+
 		public StartGenerationTypeEnum StartGenerationType { get; set; }
 
 		public int[] StartArray { get; set; }
@@ -63,6 +67,8 @@ namespace HollandMethods.StatisticClasses
 			GenerationsCount = statistic.GenerationsCount;
 			BestSpecie = new Specie(statistic.BestSpecie);
 			ProcessingTime = statistic.ProcessingTime;
+			FolherName = statistic.FolherName;
+			Id = statistic.Id;
 		}
 
 		public StatisticModel(StatisticModel statistic, int[] startArray)
@@ -84,6 +90,8 @@ namespace HollandMethods.StatisticClasses
 			BestSpecie = new Specie(statistic.BestSpecie);
 			ProcessingTime = statistic.ProcessingTime;
 			LogFilePath = statistic.LogFilePath;
+			FolherName = statistic.FolherName;
+			Id = statistic.Id;
 
 			StartArray = new int[startArray.Length];
 

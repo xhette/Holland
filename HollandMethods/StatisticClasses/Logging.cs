@@ -63,7 +63,7 @@ namespace HollandMethods.StatisticClasses
 
 				for (int j = 0; j < tasks.GetLength(1); j++)
 				{
-					col.Add(new XElement("Col", tasks[i, j]));
+					col.Add(new XElement("int", tasks[i, j]));
 				}
 
 				row.Add(col);

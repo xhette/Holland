@@ -35,6 +35,9 @@
             <td>
                 @element.ProcessingTime
             </td>
+            <td>
+                @Html.ActionLink("подробнее", "DownloadGenerationNodes", new { folderName = element.FolherName, id = element.Id, startType = element.StartGenerationTypeInt }, new { @class = "btn btn-primary btn-sm" })
+            </td>
         </tr>
        }
     </tbody>

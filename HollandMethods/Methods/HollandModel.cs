@@ -34,6 +34,8 @@ namespace HollandMethods.Methods
 			Statistic.StartGenerationType = type;
 			Statistic.RepeatsCount = repeatsCount;
 			Statistic.GenerationsCount = 0;
+			Statistic.Id = id;
+			Statistic.FolherName = folderName;
 
 			logging = new Logging(folderPath, folderName, id, type, tasks);
 		}
