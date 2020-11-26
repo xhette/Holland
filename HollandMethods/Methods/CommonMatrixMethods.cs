@@ -18,17 +18,6 @@ namespace HollandMethods.Methods
 				array[i] = random.Next(min, max);
 			}
 
-			//int[,] result = null;
-
-			//if (type == StartGenerationTypeEnum.CriticalWay)
-			//{
-			//	result = StartGenerationRender.CriticalWay(array, procCount);
-			//}
-			//else
-			//{
-			//	result = StartGenerationRender.RandomWay(array, procCount);
-			//}
-
 			return array;
 		}
 

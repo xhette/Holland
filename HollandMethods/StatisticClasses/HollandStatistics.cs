@@ -10,6 +10,8 @@ namespace HollandMethods.StatisticClasses
 	public class HollandStatistics
 	{
 		public List<StatisticModel> Statistics { get; private set; }
+		public string FolderPath { get; private set; }
+		public string FolderName { get; private set; }
 
 		int _taskCount;
 		int _procCount;
@@ -19,7 +21,7 @@ namespace HollandMethods.StatisticClasses
 		int _repeatsCount;
 		int _matrixCount;
 
-		public HollandStatistics(int taskCount, int procCount, int speciesCount, int minLoad, int maxLoad, int repeatsCount, int matrixCount)
+		public HollandStatistics(int taskCount, int procCount, int speciesCount, int minLoad, int maxLoad, int repeatsCount, int matrixCount, string folderPath)
 		{
 			 _taskCount = taskCount;
 			 _procCount = procCount;
@@ -30,21 +32,24 @@ namespace HollandMethods.StatisticClasses
 			 _matrixCount = matrixCount;
 
 			Statistics = new List<StatisticModel>();
+
+			FolderPath = folderPath;
+			FolderName = Guid.NewGuid().ToString();
 		}
 
-		void GoRandom(int[] tasks)
+		void GoRandom(int[] tasks, int id)
 		{
 			int[,] start = StartGenerationRender.RandomWay(tasks, _procCount);
-			var holland = new HollandModel(start, _speciesCount, _repeatsCount, StartGenerationTypeEnum.Random);
+			var holland = new HollandModel(start, _speciesCount, _repeatsCount, StartGenerationTypeEnum.Random, FolderPath, FolderName, id);
 			holland.Run();
 
 			Statistics.Add(new StatisticModel(holland.Statistic, tasks));
 		}
 
-		void GoCriticalWay(int[] tasks)
+		void GoCriticalWay(int[] tasks, int id)
 		{
 			int[,] start = StartGenerationRender.CriticalWay(tasks, _procCount);
-			var holland = new HollandModel(start, _speciesCount, _repeatsCount, StartGenerationTypeEnum.CriticalWay);
+			var holland = new HollandModel(start, _speciesCount, _repeatsCount, StartGenerationTypeEnum.CriticalWay, FolderPath, FolderName, id);
 			holland.Run();
 
 			Statistics.Add(new StatisticModel(holland.Statistic, tasks));
@@ -52,12 +57,16 @@ namespace HollandMethods.StatisticClasses
 
 		public void FeelStatistics()
 		{
-			Parallel.For(0, _matrixCount, c =>
+			int id = 0;
+
+			for (int i = 0; i < _matrixCount; i++)
 			{
 				int[] tasks = CommonMatrixMethods.FillArray(_minLoad, _maxLoad, _taskCount);
-				GoRandom(tasks);
-				GoCriticalWay(tasks);
-			});
+				GoRandom(tasks, id);
+				GoCriticalWay(tasks, id);
+
+				id++;
+			}
 		}
 	}
 }

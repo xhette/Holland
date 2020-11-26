@@ -1,0 +1,43 @@
+﻿@model InsertModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center col-md-6 offset-md-3">
+    @using (Html.BeginForm())
+    {
+        <div class="form-group form-inline" style="margin-top: 20px">
+                <label for="MatrixCount" class="col-md-6"><strong>Колличество матриц: </strong></label>
+            @Html.TextBoxFor(m => m.MatrixCount, new { @class = "form-control-sm", @style = "width: 100px" })
+        </div>
+
+        <div class="form-group form-inline" style="margin-top: 20px">
+                <label for="TaskCount" class="col-md-6"><strong>Колличество заданий: </strong></label>
+            @Html.TextBoxFor(m => m.TaskCount, new { @class = "form-control-sm", @style = "width: 100px" })
+        </div>
+
+        <div class="form-group form-inline" style="margin-top: 20px">
+            <label for="ProcCount" class="col-md-6"><strong>Колличество процессоров: </strong></label>
+            @Html.TextBoxFor(m => m.ProcCount, new { @class = "form-control-sm", @style = "width: 100px" })
+        </div>
+
+        <div class="form-group form-inline" style="margin-top: 20px">
+            <label for="MinLoad" class="col-md-6"><strong>Минимальная граница: </strong></label>
+            @Html.TextBoxFor(m => m.MinLoad, new { @class = "form-control-sm", @style = "width: 100px" })
+        </div>
+        <div class="form-group form-inline" style="margin-top: 20px">
+            <label for="MaxLoad" class="col-md-6"><strong>Максимальная граница: </strong></label>
+            @Html.TextBoxFor(m => m.MaxLoad, new { @class = "form-control-sm", @style = "width: 100px" })
+        </div>
+        <div class="form-group form-inline" style="margin-top: 20px">
+            <label for="SpeciesCount" class="col-md-6"><strong>Колличество особей: </strong></label>
+            @Html.TextBoxFor(m => m.SpeciesCount, new { @class = "form-control-sm", @style = "width: 100px" })
+        </div>
+        <div class="form-group form-inline" style="margin-top: 20px">
+            <label for="RepeatsCount" class="col-md-6"><strong>Колличество повторов: </strong></label>
+            @Html.TextBoxFor(m => m.RepeatsCount, new { @class = "form-control-sm", @style = "width: 100px" })
+        </div>
+
+        <button style="margin-top: 20px" type="submit" class="btn btn-primary">Подтвердить</button>
+    }
+</div>

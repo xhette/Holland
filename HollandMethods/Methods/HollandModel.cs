@@ -19,7 +19,9 @@ namespace HollandMethods.Methods
 
 		readonly int repeatsCount;
 
-		public HollandModel(int[,] tasks, int speciesCount, int repeatsCount, StartGenerationTypeEnum type)
+		Logging logging;
+
+		public HollandModel(int[,] tasks, int speciesCount, int repeatsCount, StartGenerationTypeEnum type, string folderPath, string folderName, int id)
 		{
 			Tasks = tasks;
 			lastGeneration = new Generation(Tasks, speciesCount);
@@ -32,6 +34,8 @@ namespace HollandMethods.Methods
 			Statistic.StartGenerationType = type;
 			Statistic.RepeatsCount = repeatsCount;
 			Statistic.GenerationsCount = 0;
+
+			logging = new Logging(folderPath, folderName, id, type, tasks);
 		}
 
 		private void Step()
@@ -52,7 +56,10 @@ namespace HollandMethods.Methods
 			{
 				++ Statistic.GenerationsCount;
 
+				logging.WriteGeneration(lastGeneration);
+
 				Step();
+
 				Specie currentBestSpecie = lastGeneration.BestSpecie();
 				if (currentBestSpecie.Fitness < bestSpecie.Fitness)
 				{
@@ -68,6 +75,8 @@ namespace HollandMethods.Methods
 			resultTime = startTime.Elapsed;
 			Statistic.ProcessingTime = resultTime;
 			Statistic.BestSpecie = bestSpecie;
+
+			logging.StopLogging();
 		}
 	}
 }

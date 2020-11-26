@@ -41,6 +41,8 @@ namespace HollandMethods.StatisticClasses
 			}
 		}
 
+		public string LogFilePath { get; set; }
+
 		public StatisticModel() { }
 
 		public StatisticModel(StatisticModel statistic)
@@ -81,6 +83,7 @@ namespace HollandMethods.StatisticClasses
 			GenerationsCount = statistic.GenerationsCount;
 			BestSpecie = new Specie(statistic.BestSpecie);
 			ProcessingTime = statistic.ProcessingTime;
+			LogFilePath = statistic.LogFilePath;
 
 			StartArray = new int[startArray.Length];
 
