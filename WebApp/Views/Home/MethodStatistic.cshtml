@@ -3,59 +3,75 @@
     ViewData["Title"] = "Home Page";
 }
 
-@foreach (var statistic in Model)
-{
-    <h4>
-        @statistic.StartType
-    </h4>
-<table class="table">
-    <thead>
-        <tr>
-            <td>
-                Количество поколений
-            </td>
-            <td>
-                Лучшая особь
-            </td>
-            <td>
-                Время выполнения
-            </td>
-        </tr>
-    </thead>
-    <tbody>
-       @foreach (var element in statistic.HollandResult)
-       {
-        <tr>
-            <td>
-                @element.GenerationsCount
-            </td>
-            <td>
-                @element.BestSpecie.Fitness
-            </td>
-            <td>
-                @element.ProcessingTime
-            </td>
-            <td>
-                @Html.ActionLink("подробнее", "DownloadGenerationNodes", new { folderName = element.FolherName, id = element.Id, startType = element.StartGenerationTypeInt }, new { @class = "btn btn-primary btn-sm" })
-            </td>
-        </tr>
-       }
-    </tbody>
-</table>
-<h5>Средний результат</h5>
-<table class="table">
-    <tbody>
-        <tr>
-            <td>
-                @(statistic.HollandResult.Select(c => c.GenerationsCount).ToList().Sum() / statistic.HollandResult.Select(c => c.GenerationsCount).ToList().Count())
-            </td>
-            <td>
-                @(statistic.HollandResult.Select(c => c.BestSpecie.Fitness).ToList().Sum() / statistic.HollandResult.Select(c => c.BestSpecie.Fitness).ToList().Count())
-            </td>
-            <td>
-                @*@(statistic.HollandResult.Select(c => c.ProcessingTime.Milliseconds).ToList().Sum() / statistic.HollandResult.Select(c => c.ProcessingTime).ToList().Count())*@
-            </td>
-        </tr>
-    </tbody>
-</table>
-}
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-link active" id="nav-tables-tab" data-toggle="tab" href="#nav-tables" role="tab" aria-controls="nav-tables" aria-selected="true">Таблицы</a>
+        <a class="nav-link" id="nav-graphics-tab" data-toggle="tab" href="#nav-graphics" role="tab" aria-controls="nav-graphics" aria-selected="false">Графики</a>
+    </div>
+</nav>
+
+<div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-tables" role="tabpanel" aria-labelledby="nav-tables-tab">
+        @foreach (var statistic in Model)
+        {
+            <h4>
+                @statistic.StartType
+            </h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>
+                            Количество поколений
+                        </td>
+                        <td>
+                            Лучшая особь
+                        </td>
+                        <td>
+                            Время выполнения
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var element in statistic.HollandResult)
+                    {
+                        <tr>
+                            <td>
+                                @element.GenerationsCount
+                            </td>
+                            <td>
+                                @element.BestSpecie.Fitness
+                            </td>
+                            <td>
+                                @element.ProcessingTime
+                            </td>
+                            <td>
+                                @Html.ActionLink("подробнее", "DownloadGenerationNodes", new { folderName = element.FolherName, id = element.Id, startType = element.StartGenerationTypeInt }, new { @class = "btn btn-primary btn-sm" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <h5>Средний результат</h5>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>
+                            @(statistic.HollandResult.Select(c => c.GenerationsCount).ToList().Sum() / statistic.HollandResult.Select(c => c.GenerationsCount).ToList().Count())
+                        </td>
+                        <td>
+                            @(statistic.HollandResult.Select(c => c.BestSpecie.Fitness).ToList().Sum() / statistic.HollandResult.Select(c => c.BestSpecie.Fitness).ToList().Count())
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        }
+    </div>
+
+
+    <div class="tab-pane fade" id="nav-graphics" role="tabpanel" aria-labelledby="nav-graphics-tab">
+        
+    </div>

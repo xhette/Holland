@@ -5,10 +5,6 @@ using System.Text;
 using System.Text.Encodings;
 using System.Xml.Serialization;
 
-using iTextSharp.text;
-using iTextSharp.text.html.simpleparser;
-using iTextSharp.text.pdf;
-
 using WebApp.XmlModels;
 
 namespace WebApp.Classes
